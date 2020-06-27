@@ -1,0 +1,23 @@
+﻿@model API_Consumption.Models.OuterJSON;
+
+<title>TOP 100 Free iTunes Apps</title>
+
+<h1>Top 100 US Free Apps in iTunes Store:</h1>
+
+@foreach (API_Consumption.Models.Results app in Model.feed.results)
+{
+    <img src="@app.artworkUrl100" height="80px"/>
+
+    <h3><a href="@app.url" target="_blank">@app.name</a></h3>
+    <p style="font-size:10px">@app.artistName</p>
+
+    <p><strong>Genres:</strong></p>
+
+    @foreach (API_Consumption.Models.Genres genre in app.genres)
+    {
+        <p style="font-size:10px">@genre.name</p>
+    }
+
+    <br />
+}
+
